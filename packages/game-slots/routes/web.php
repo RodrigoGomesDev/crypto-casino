@@ -13,7 +13,8 @@ Route::name('games.')
         // show initial game screen
         Route::get('games/slots', 'GameSlotsController@show')->name('slots.show');
         // play game (spin the reels)
-        Route::post('games/slots/play', 'GameSlotsController@play')->name('slots.play')->middleware('concurrent');
+        Route::post('games/slots/play', 'GameSlotsController@play')->name('slots.play');
+        // ->middleware('concurrent')
     });
 
 
