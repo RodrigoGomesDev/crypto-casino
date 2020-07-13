@@ -1,5 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Route;
+
+
 // game routes
 Route::name('games.')
     ->namespace('Packages\GameSlots\Http\Controllers\Frontend')

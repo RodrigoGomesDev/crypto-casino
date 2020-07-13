@@ -32,11 +32,12 @@ abstract class GameService
     public function init(): GameService
     {
         // try to find already existing model first
-        $this->game = Game::where([
+        $game = $this->game = Game::where([
             'gameable_type' => $this->gameableModel,
-            'status'        => Game::STATUS_CREATED,
+            'status'        => 1,
             'account_id'    => $this->user->account->id
-        ])->orderBy('id', 'desc')->first();
+            ])->orderBy('id', 'desc')->first();
+            
 
         // create a new game if it doesn't exist
         if (!$this->game)
@@ -70,16 +71,22 @@ abstract class GameService
         $gameable = $this->createGameable();
 
         // create game model
-        $this->game = new Game();
-        $this->game->account()->associate($this->user->account);
-        $this->game->bet = 0;
-        $this->game->win = 0;
-        $this->game->secret = $this->makeSecret(); // game specific server secret
-        $this->game->server_seed = $this->makeServerSeed();
-        $this->game->status = Game::STATUS_CREATED;
+        $teste = [
+            $this->game = new Game(),
+            $this->game->account()->associate($this->user->account),
+            $this->game->bet = 0,
+            $this->game->win = 0,
+            $this->game->secret = $this->makeSecret(), // game specific server secret
+            $this->game->server_seed = $this->makeServerSeed(),
+            $this->game->status = 1,
+            // $this->game->status = Game::STATUS_CREATED,
+        ];
 
+
+        // dd($teste);
+        
         $gameable->game()->save($this->game);
-
+        
         return $this->game;
     }
 

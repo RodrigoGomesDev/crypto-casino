@@ -12,7 +12,7 @@ class GameSlotsService extends GameService
 {
     protected $gameableModel = GameSlots::class;
 
-    private $slot;
+    // private $slot;
 
     const lines = [
         [1, 1, 1, 1, 1],
@@ -61,6 +61,7 @@ class GameSlotsService extends GameService
         $gameable->save();
 
         return $gameable;
+
     }
 
     protected function makeSecret(): string

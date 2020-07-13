@@ -15,6 +15,7 @@ class GameController extends Controller
     public function index(Request $request)
     {
         $sort = new GameSort($request);
+
         $uid = $request->query('uid');
 
         $games = Game::where('status', Game::STATUS_COMPLETED)

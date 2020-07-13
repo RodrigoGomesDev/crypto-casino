@@ -92,11 +92,11 @@ class HIncludeFragmentRendererTest extends TestCase
         $engine = $this->getMockBuilder('Symfony\\Component\\Templating\\EngineInterface')->getMock();
         $engine->expects($this->once())
             ->method('exists')
-            ->with('loading...')
+            ->with('Loading...')
             ->will($this->throwException(new \RuntimeException()));
 
         // only default
         $strategy = new HIncludeFragmentRenderer($engine);
-        $this->assertEquals('<hx:include src="/foo">loading...</hx:include>', $strategy->render('/foo', Request::create('/'), array('default' => 'loading...'))->getContent());
+        $this->assertEquals('<hx:include src="/foo">Loading...</hx:include>', $strategy->render('/foo', Request::create('/'), array('default' => 'Loading...'))->getContent());
     }
 }

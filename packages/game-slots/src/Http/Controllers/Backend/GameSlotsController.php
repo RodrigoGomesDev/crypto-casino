@@ -21,7 +21,7 @@ class GameSlotsController extends Controller
                 unlink($path.$file);
         
         $files = [];
-        
+
         if($request->file('files')){
             $is_error=false;
             foreach($request->file('files') as $file)
