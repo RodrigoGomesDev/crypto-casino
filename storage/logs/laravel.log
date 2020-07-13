@@ -1,0 +1,176 @@
+[2020-07-08 00:28:25] production.ERROR: SQLSTATE[HY000] [2002] No such file or directory (SQL: select * from information_schema.tables where table_schema = casino and table_name = migrations) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 2002): SQLSTATE[HY000] [2002] No such file or directory (SQL: select * from information_schema.tables where table_schema = casino and table_name = migrations) at /home/ricardo/Área de Trabalho/crypto/vendor/laravel/framework/src/Illuminate/Database/Connection.php:664, PDOException(code: 2002): SQLSTATE[HY000] [2002] No such file or directory at /home/ricardo/Área de Trabalho/crypto/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:70)
+[stacktrace]
+#0 /home/ricardo/Área de Trabalho/crypto/vendor/laravel/framework/src/Illuminate/Database/Connection.php(624): Illuminate\\Database\\Connection->runQueryCallback()
+#1 /home/ricardo/Área de Trabalho/crypto/vendor/laravel/framework/src/Illuminate/Database/Connection.php(333): Illuminate\\Database\\Connection->run()
+#2 /home/ricardo/Área de Trabalho/crypto/vendor/laravel/framework/src/Illuminate/Database/Schema/MySqlBuilder.php(18): Illuminate\\Database\\Connection->select()
+#3 /home/ricardo/Área de Trabalho/crypto/vendor/laravel/framework/src/Illuminate/Database/Migrations/DatabaseMigrationRepository.php(169): Illuminate\\Database\\Schema\\MySqlBuilder->hasTable()
+#4 /home/ricardo/Área de Trabalho/crypto/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(556): Illuminate\\Database\\Migrations\\DatabaseMigrationRepository->repositoryExists()
+#5 /home/ricardo/Área de Trabalho/crypto/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(91): Illuminate\\Database\\Migrations\\Migrator->repositoryExists()
+#6 /home/ricardo/Área de Trabalho/crypto/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(63): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->prepareDatabase()
+#7 [internal function]: Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#8 /home/ricardo/Área de Trabalho/crypto/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(29): call_user_func_array()
+#9 /home/ricardo/Área de Trabalho/crypto/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(87): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#10 /home/ricardo/Área de Trabalho/crypto/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(31): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#11 /home/ricardo/Área de Trabalho/crypto/vendor/laravel/framework/src/Illuminate/Container/Container.php(572): Illuminate\\Container\\BoundMethod::call()
+#12 /home/ricardo/Área de Trabalho/crypto/vendor/laravel/framework/src/Illuminate/Console/Command.php(183): Illuminate\\Container\\Container->call()
+#13 /home/ricardo/Área de Trabalho/crypto/vendor/symfony/console/Command/Command.php(255): Illuminate\\Console\\Command->execute()
+#14 /home/ricardo/Área de Trabalho/crypto/vendor/laravel/framework/src/Illuminate/Console/Command.php(170): Symfony\\Component\\Console\\Command\\Command->run()
+#15 /home/ricardo/Área de Trabalho/crypto/vendor/symfony/console/Application.php(917): Illuminate\\Console\\Command->run()
+#16 /home/ricardo/Área de Trabalho/crypto/vendor/symfony/console/Application.php(269): Symfony\\Component\\Console\\Application->doRunCommand()
+#17 /home/ricardo/Área de Trabalho/crypto/vendor/symfony/console/Application.php(145): Symfony\\Component\\Console\\Application->doRun()
+#18 /home/ricardo/Área de Trabalho/crypto/vendor/laravel/framework/src/Illuminate/Console/Application.php(89): Symfony\\Component\\Console\\Application->run()
+#19 /home/ricardo/Área de Trabalho/crypto/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(122): Illuminate\\Console\\Application->run()
+#20 /home/ricardo/Área de Trabalho/crypto/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#21 {main}
+"} 
+[2020-07-08 00:28:56] production.DEBUG: select * from information_schema.tables where table_schema = ? and table_name = ? {"params":["casino","migrations"],"time":3.85} 
+[2020-07-08 00:28:56] production.DEBUG: create table `migrations` (`id` int unsigned not null auto_increment primary key, `migration` varchar(255) not null, `batch` int not null) default character set utf8 collate 'utf8_unicode_ci' engine = InnoDB {"params":[],"time":14.23} 
+[2020-07-08 00:28:56] production.DEBUG: select `migration` from `migrations` order by `batch` asc, `migration` asc {"params":[],"time":1} 
+[2020-07-08 00:28:56] production.DEBUG: select max(`batch`) as aggregate from `migrations` {"params":[],"time":0.63} 
+[2020-07-08 00:28:56] production.DEBUG: create table `users` (`id` int unsigned not null auto_increment primary key, `name` varchar(100) not null, `email` varchar(255) not null, `role` varchar(50) not null, `status` tinyint not null, `password` varchar(255) not null, `remember_token` varchar(100) null, `last_login_from` varchar(45) null, `last_login_at` datetime null, `email_verified_at` timestamp null, `created_at` timestamp null, `updated_at` timestamp null) default character set utf8 collate 'utf8_unicode_ci' engine = InnoDB {"params":[],"time":14.09} 
+[2020-07-08 00:28:56] production.DEBUG: alter table `users` add index `users_role_index`(`role`) {"params":[],"time":12.31} 
+[2020-07-08 00:28:56] production.DEBUG: alter table `users` add index `users_status_index`(`status`) {"params":[],"time":11.75} 
+[2020-07-08 00:28:56] production.DEBUG: alter table `users` add unique `users_name_unique`(`name`) {"params":[],"time":11.84} 
+[2020-07-08 00:28:56] production.DEBUG: alter table `users` add unique `users_email_unique`(`email`) {"params":[],"time":11.86} 
+[2020-07-08 00:28:56] production.DEBUG: insert into `migrations` (`migration`, `batch`) values (?, ?) {"params":["2014_10_12_000000_create_users_table",1],"time":2.79} 
+[2020-07-08 00:28:56] production.DEBUG: create table `password_resets` (`email` varchar(255) not null, `token` varchar(255) not null, `created_at` timestamp null) default character set utf8 collate 'utf8_unicode_ci' engine = InnoDB {"params":[],"time":14.07} 
+[2020-07-08 00:28:56] production.DEBUG: alter table `password_resets` add index `password_resets_email_index`(`email`) {"params":[],"time":13.18} 
+[2020-07-08 00:28:56] production.DEBUG: insert into `migrations` (`migration`, `batch`) values (?, ?) {"params":["2014_10_12_100000_create_password_resets_table",1],"time":2.87} 
+[2020-07-08 00:28:56] production.DEBUG: create table `accounts` (`id` int unsigned not null auto_increment primary key, `user_id` int unsigned not null, `code` varchar(50) not null, `balance` decimal(20, 2) not null default '0', `created_at` timestamp null, `updated_at` timestamp null) default character set utf8 collate 'utf8_unicode_ci' engine = InnoDB {"params":[],"time":12.85} 
+[2020-07-08 00:28:56] production.DEBUG: alter table `accounts` add constraint `accounts_user_id_foreign` foreign key (`user_id`) references `users` (`id`) on delete cascade on update cascade {"params":[],"time":38.65} 
+[2020-07-08 00:28:56] production.DEBUG: alter table `accounts` add unique `accounts_code_unique`(`code`) {"params":[],"time":12.42} 
+[2020-07-08 00:28:56] production.DEBUG: insert into `migrations` (`migration`, `batch`) values (?, ?) {"params":["2018_11_28_000000_create_accounts_table",1],"time":2.82} 
+[2020-07-08 00:28:56] production.DEBUG: create table `account_transactions` (`id` int unsigned not null auto_increment primary key, `account_id` int unsigned not null, `amount` decimal(20, 2) not null, `balance` decimal(20, 2) not null, `transactionable_type` varchar(255) not null, `transactionable_id` bigint unsigned not null, `created_at` timestamp null, `updated_at` timestamp null) default character set utf8 collate 'utf8_unicode_ci' engine = InnoDB {"params":[],"time":13.96} 
+[2020-07-08 00:28:56] production.DEBUG: alter table `account_transactions` add index `account_transactions_morph`(`transactionable_type`, `transactionable_id`) {"params":[],"time":13.44} 
+[2020-07-08 00:28:56] production.DEBUG: alter table `account_transactions` add constraint `account_transactions_account_id_foreign` foreign key (`account_id`) references `accounts` (`id`) on delete cascade on update cascade {"params":[],"time":42.42} 
+[2020-07-08 00:28:56] production.DEBUG: insert into `migrations` (`migration`, `batch`) values (?, ?) {"params":["2018_11_28_000001_create_account_transactions_table",1],"time":1.31} 
+[2020-07-08 00:28:56] production.DEBUG: create table `games` (`id` int unsigned not null auto_increment primary key, `account_id` int unsigned not null, `gameable_type` varchar(255) not null, `gameable_id` bigint unsigned not null, `bet` decimal(16, 2) not null, `win` decimal(16, 2) not null, `result` varchar(100) null, `created_at` timestamp null, `updated_at` timestamp null) default character set utf8 collate 'utf8_unicode_ci' engine = InnoDB {"params":[],"time":13.92} 
+[2020-07-08 00:28:56] production.DEBUG: alter table `games` add index `game_morph`(`gameable_type`, `gameable_id`) {"params":[],"time":21.25} 
+[2020-07-08 00:28:56] production.DEBUG: alter table `games` add constraint `games_account_id_foreign` foreign key (`account_id`) references `accounts` (`id`) on delete cascade on update cascade {"params":[],"time":39.79} 
+[2020-07-08 00:28:56] production.DEBUG: insert into `migrations` (`migration`, `batch`) values (?, ?) {"params":["2018_11_29_000000_create_games_table",1],"time":2.72} 
+[2020-07-08 00:28:56] production.DEBUG: create table `game_slots` (`id` int unsigned not null auto_increment primary key, `lines_bet` int not null, `lines_win` int not null, `scatters_count` int not null, `reel_positions` varchar(50) not null, `created_at` timestamp null, `updated_at` timestamp null) default character set utf8 collate 'utf8_unicode_ci' engine = InnoDB {"params":[],"time":12.62} 
+[2020-07-08 00:28:56] production.DEBUG: insert into `migrations` (`migration`, `batch`) values (?, ?) {"params":["2018_11_29_000001_create_game_slots_table",1],"time":2.9} 
+[2020-07-08 00:28:56] production.DEBUG: alter table `games` drop `result` {"params":[],"time":6.85} 
+[2020-07-08 00:28:56] production.DEBUG: insert into `migrations` (`migration`, `batch`) values (?, ?) {"params":["2019_01_14_114519_alter_games_table_delete_result",1],"time":3.7} 
+[2020-07-08 00:28:56] production.DEBUG: alter table `games` add `status` tinyint not null after `win` {"params":[],"time":8.85} 
+[2020-07-08 00:28:56] production.DEBUG: alter table `games` add index `games_status_index`(`status`) {"params":[],"time":11.48} 
+[2020-07-08 00:28:56] production.DEBUG: update `games` set `status` = ? {"params":[1],"time":0.42} 
+[2020-07-08 00:28:56] production.DEBUG: insert into `migrations` (`migration`, `batch`) values (?, ?) {"params":["2019_01_14_160000_alter_games_table_add_status",1],"time":2.71} 
+[2020-07-08 00:28:56] production.DEBUG: alter table `users` add `referrer_id` int unsigned null after `id` {"params":[],"time":6.26} 
+[2020-07-08 00:28:56] production.DEBUG: alter table `users` add constraint `users_referrer_id_foreign` foreign key (`referrer_id`) references `users` (`id`) on delete cascade on update cascade {"params":[],"time":51.7} 
+[2020-07-08 00:28:56] production.DEBUG: insert into `migrations` (`migration`, `batch`) values (?, ?) {"params":["2019_02_18_101050_alter_users_table_add_referrer_id",1],"time":2.86} 
+[2020-07-08 00:28:56] production.DEBUG: create table `referral_bonuses` (`id` int unsigned not null auto_increment primary key, `user_id` int unsigned not null, `type` tinyint not null, `amount` decimal(20, 2) not null, `created_at` timestamp null, `updated_at` timestamp null) default character set utf8 collate 'utf8_unicode_ci' engine = InnoDB {"params":[],"time":12.09} 
+[2020-07-08 00:28:56] production.DEBUG: alter table `referral_bonuses` add constraint `referral_bonuses_user_id_foreign` foreign key (`user_id`) references `users` (`id`) on delete cascade on update cascade {"params":[],"time":39.98} 
+[2020-07-08 00:28:56] production.DEBUG: insert into `migrations` (`migration`, `batch`) values (?, ?) {"params":["2019_02_18_131502_create_referral_bonuses_table",1],"time":2.93} 
+[2020-07-08 00:28:56] production.DEBUG: create table `chat_messages` (`id` int unsigned not null auto_increment primary key, `user_id` int unsigned not null, `message` text not null, `created_at` timestamp null, `updated_at` timestamp null) default character set utf8 collate 'utf8_unicode_ci' engine = InnoDB {"params":[],"time":12.67} 
+[2020-07-08 00:28:56] production.DEBUG: alter table `chat_messages` add constraint `chat_messages_user_id_foreign` foreign key (`user_id`) references `users` (`id`) on delete cascade on update cascade {"params":[],"time":38.31} 
+[2020-07-08 00:28:56] production.DEBUG: insert into `migrations` (`migration`, `batch`) values (?, ?) {"params":["2019_02_19_125624_create_chat_messages_table",1],"time":1.55} 
+[2020-07-08 00:28:56] production.DEBUG: create table `debits` (`id` int unsigned not null auto_increment primary key, `account_id` int unsigned not null, `amount` decimal(20, 2) not null, `created_at` timestamp null, `updated_at` timestamp null) default character set utf8 collate 'utf8_unicode_ci' engine = InnoDB {"params":[],"time":11.3} 
+[2020-07-08 00:28:57] production.DEBUG: alter table `debits` add constraint `debits_account_id_foreign` foreign key (`account_id`) references `accounts` (`id`) on delete cascade on update cascade {"params":[],"time":37.54} 
+[2020-07-08 00:28:57] production.DEBUG: insert into `migrations` (`migration`, `batch`) values (?, ?) {"params":["2019_03_05_072317_create_debits_table",1],"time":1.36} 
+[2020-07-08 00:28:57] production.DEBUG: create table `credits` (`id` int unsigned not null auto_increment primary key, `account_id` int unsigned not null, `amount` decimal(20, 2) not null, `created_at` timestamp null, `updated_at` timestamp null) default character set utf8 collate 'utf8_unicode_ci' engine = InnoDB {"params":[],"time":11.19} 
+[2020-07-08 00:28:57] production.DEBUG: alter table `credits` add constraint `credits_account_id_foreign` foreign key (`account_id`) references `accounts` (`id`) on delete cascade on update cascade {"params":[],"time":135.33} 
+[2020-07-08 00:28:57] production.DEBUG: insert into `migrations` (`migration`, `batch`) values (?, ?) {"params":["2019_03_05_072644_create_credits_table",1],"time":3.15} 
+[2020-07-08 00:28:57] production.DEBUG: alter table `games` add `secret` varchar(300) not null after `status`, add `server_seed` varchar(32) not null after `secret`, add `client_seed` varchar(32) null after `server_seed` {"params":[],"time":7} 
+[2020-07-08 00:28:57] production.DEBUG: insert into `migrations` (`migration`, `batch`) values (?, ?) {"params":["2019_03_11_101041_alter_games_table_add_secret_seed",1],"time":2.92} 
+[2020-07-08 00:28:57] production.DEBUG: alter table `game_slots` add `bet_amount` decimal(10, 2) not null after `lines_bet` {"params":[],"time":6.34} 
+[2020-07-08 00:28:57] production.DEBUG: insert into `migrations` (`migration`, `batch`) values (?, ?) {"params":["2019_03_13_142811_alter_game_slots_table_add_bet_amount",1],"time":3.3} 
+[2020-07-08 00:28:57] production.DEBUG: alter table `users` add `totp_secret` varchar(300) null after `remember_token` {"params":[],"time":6.95} 
+[2020-07-08 00:28:57] production.DEBUG: insert into `migrations` (`migration`, `batch`) values (?, ?) {"params":["2019_06_13_095842_alter_users_table_add2_f_a_secret",1],"time":2.9} 
+[2020-07-08 00:28:57] production.DEBUG: alter table `users` add `referee_sign_up_credits` int unsigned null after `totp_secret`, add `referrer_sign_up_credits` int unsigned null after `referee_sign_up_credits`, add `referrer_game_bet_pct` decimal(8, 2) unsigned null after `referrer_sign_up_credits`, add `referrer_deposit_pct` decimal(8, 2) unsigned null after `referrer_game_bet_pct` {"params":[],"time":8.28} 
+[2020-07-08 00:28:57] production.DEBUG: insert into `migrations` (`migration`, `batch`) values (?, ?) {"params":["2019_07_16_070139_alter_users_table_add_referrer_fields",1],"time":2.78} 
+[2020-07-08 00:28:57] production.DEBUG: update `account_transactions` set `transactionable_type` = ?, `updated_at` = ? where `transactionable_type` = ? {"params":["App\\Models\\Bonus","2020-07-08 00:28:57","App\\Models\\ReferralBonus"],"time":0.88} 
+[2020-07-08 00:28:57] production.DEBUG: alter table `referral_bonuses` drop foreign key `referral_bonuses_user_id_foreign` {"params":[],"time":5.61} 
+[2020-07-08 00:28:57] production.DEBUG: rename table `referral_bonuses` to `bonuses` {"params":[],"time":9.55} 
+[2020-07-08 00:28:57] production.DEBUG: alter table `bonuses` add `account_id` int unsigned not null after `id` {"params":[],"time":5.92} 
+[2020-07-08 00:28:57] production.DEBUG: select * from `bonuses` {"params":[],"time":0.46} 
+[2020-07-08 00:28:57] production.DEBUG: alter table `bonuses` drop `user_id` {"params":[],"time":10.92} 
+[2020-07-08 00:28:57] production.DEBUG: alter table `bonuses` add constraint `bonuses_account_id_foreign` foreign key (`account_id`) references `accounts` (`id`) on delete cascade on update cascade {"params":[],"time":39.67} 
+[2020-07-08 00:28:57] production.DEBUG: insert into `migrations` (`migration`, `batch`) values (?, ?) {"params":["2019_09_18_150215_alter_referral_bonuses_table_add_account_id_foreign_key",1],"time":3.2} 
+[2020-07-08 00:28:57] production.DEBUG: alter table `users` add `referrer_game_loss_pct` decimal(8, 2) unsigned null after `referrer_sign_up_credits`, add `referrer_game_win_pct` decimal(8, 2) unsigned null after `referrer_game_loss_pct` {"params":[],"time":6.59} 
+[2020-07-08 00:28:57] production.DEBUG: alter table `users` drop `referrer_game_bet_pct` {"params":[],"time":6.26} 
+[2020-07-08 00:28:57] production.DEBUG: insert into `migrations` (`migration`, `batch`) values (?, ?) {"params":["2019_09_19_085844_alter_users_table_modify_referrer_fields",1],"time":2.9} 
+[2020-07-08 00:28:57] production.DEBUG: create table `commands` (`id` int unsigned not null auto_increment primary key, `class` varchar(255) not null, `count` int unsigned not null default '1', `created_at` timestamp null, `updated_at` timestamp null) default character set utf8 collate 'utf8_unicode_ci' engine = InnoDB {"params":[],"time":12.9} 
+[2020-07-08 00:28:57] production.DEBUG: alter table `commands` add unique `commands_class_unique`(`class`) {"params":[],"time":12.03} 
+[2020-07-08 00:28:57] production.DEBUG: insert into `migrations` (`migration`, `batch`) values (?, ?) {"params":["2019_09_26_091033_create_commands_table",1],"time":1.34} 
+[2020-07-08 00:28:57] production.DEBUG: create table `social_profiles` (`id` int unsigned not null auto_increment primary key, `user_id` int unsigned not null, `provider_name` varchar(50) not null, `provider_user_id` varchar(255) not null, `created_at` timestamp null, `updated_at` timestamp null) default character set utf8 collate 'utf8_unicode_ci' engine = InnoDB {"params":[],"time":11.19} 
+[2020-07-08 00:28:57] production.DEBUG: alter table `social_profiles` add constraint `social_profiles_user_id_foreign` foreign key (`user_id`) references `users` (`id`) on delete cascade on update cascade {"params":[],"time":37.93} 
+[2020-07-08 00:28:57] production.DEBUG: alter table `social_profiles` add unique `social_profiles_provider_name_provider_user_id_unique`(`provider_name`, `provider_user_id`) {"params":[],"time":12.75} 
+[2020-07-08 00:28:57] production.DEBUG: insert into `migrations` (`migration`, `batch`) values (?, ?) {"params":["2019_10_03_100000_create_social_profiles_table",1],"time":2.67} 
+[2020-07-08 00:28:57] production.DEBUG: create table `game_free_slots` (`id` int unsigned not null auto_increment primary key, `account_id` int unsigned not null, `bet` decimal(16, 2) not null, `lines` int not null, `quantity` int not null, `created_at` timestamp null, `updated_at` timestamp null) default character set utf8 collate 'utf8_unicode_ci' engine = InnoDB {"params":[],"time":12.89} 
+[2020-07-08 00:28:57] production.DEBUG: alter table `game_free_slots` add constraint `game_free_slots_account_id_foreign` foreign key (`account_id`) references `accounts` (`id`) on delete cascade on update cascade {"params":[],"time":38.57} 
+[2020-07-08 00:28:57] production.DEBUG: alter table `game_free_slots` add index `game_free_slots_quantity_index`(`quantity`) {"params":[],"time":11.95} 
+[2020-07-08 00:28:57] production.DEBUG: insert into `migrations` (`migration`, `batch`) values (?, ?) {"params":["2020_05_26_000001_create_game_free_slots_table",1],"time":2.85} 
+[2020-07-08 00:28:57] production.DEBUG: alter table `game_slots` add `free_games_count` int not null after `scatters_count` {"params":[],"time":7.66} 
+[2020-07-08 00:28:57] production.DEBUG: insert into `migrations` (`migration`, `batch`) values (?, ?) {"params":["2020_05_26_000010_alter_game_slots_table_add_free_games_count",1],"time":1.17} 
+[2020-07-08 00:29:06] production.ERROR: Command "server" is not defined.
+
+Did you mean one of these?
+    dump-server
+    make:observer
+    serve {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"server\" is not defined.
+
+Did you mean one of these?
+    dump-server
+    make:observer
+    serve at /home/ricardo/Área de Trabalho/crypto/vendor/symfony/console/Application.php:648)
+[stacktrace]
+#0 /home/ricardo/Área de Trabalho/crypto/vendor/symfony/console/Application.php(233): Symfony\\Component\\Console\\Application->find()
+#1 /home/ricardo/Área de Trabalho/crypto/vendor/symfony/console/Application.php(145): Symfony\\Component\\Console\\Application->doRun()
+#2 /home/ricardo/Área de Trabalho/crypto/vendor/laravel/framework/src/Illuminate/Console/Application.php(89): Symfony\\Component\\Console\\Application->run()
+#3 /home/ricardo/Área de Trabalho/crypto/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(122): Illuminate\\Console\\Application->run()
+#4 /home/ricardo/Área de Trabalho/crypto/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#5 {main}
+"} 
+[2020-07-08 00:29:27] production.DEBUG: select * from `games` where `status` = ? order by `id` desc limit 5 {"params":[1],"time":2.23} 
+[2020-07-08 00:29:27] production.DEBUG: select * from `games` where `status` = ? order by `win` desc limit 1 {"params":[1],"time":0.83} 
+[2020-07-08 00:29:27] production.DEBUG: select * from `games` where `status` = ? order by `id` desc limit 5 {"params":[1],"time":1.36} 
+[2020-07-08 00:29:27] production.DEBUG: select * from `games` where `status` = ? order by `win` desc limit 1 {"params":[1],"time":0.5} 
+[2020-07-08 00:29:32] production.DEBUG: select * from `users` where `email` = ? and `status` = ? limit 1 {"params":["ricardogomesweb@gmail.com",0],"time":1.72} 
+[2020-07-08 00:29:43] production.DEBUG: select count(*) as aggregate from `users` where `name` = ? {"params":["Ricardo Gomes"],"time":1.32} 
+[2020-07-08 00:29:43] production.DEBUG: select count(*) as aggregate from `users` where `email` = ? {"params":["ricardogomesweb@gmail.com"],"time":0.45} 
+[2020-07-08 00:29:43] production.DEBUG: insert into `users` (`referrer_id`, `name`, `email`, `password`, `role`, `status`, `last_login_from`, `last_login_at`, `updated_at`, `created_at`) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) {"params":[null,"Ricardo Gomes","ricardogomesweb@gmail.com","$2y$10$Tos4Xr2lYc94Vmlvg9JB4udkd5bKDGtb8hP2guGI.njFxlBQ8cG9q","USER",0,"127.0.0.1","2020-07-08 00:29:43","2020-07-08 00:29:43","2020-07-08 00:29:43"],"time":3.89} 
+[2020-07-08 00:29:43] production.DEBUG: insert into `accounts` (`user_id`, `code`, `updated_at`, `created_at`) values (?, ?, ?, ?) {"params":[1,"3689d106f194888c8f6a289f5465ff26e426d18d5561afdbc5","2020-07-08 00:29:43","2020-07-08 00:29:43"],"time":3.79} 
+[2020-07-08 00:29:43] production.DEBUG: select * from `accounts` where `accounts`.`user_id` = ? and `accounts`.`user_id` is not null limit 1 {"params":[1],"time":0.79} 
+[2020-07-08 00:29:43] production.DEBUG: insert into `bonuses` (`account_id`, `type`, `amount`, `updated_at`, `created_at`) values (?, ?, ?, ?, ?) {"params":[1,20,1000,"2020-07-08 00:29:43","2020-07-08 00:29:43"],"time":2.76} 
+[2020-07-08 00:29:43] production.DEBUG: update `accounts` set `balance` = `balance` + 1000, `updated_at` = ? where `id` = ? {"params":["2020-07-08 00:29:43",1],"time":0.89} 
+[2020-07-08 00:29:43] production.DEBUG: insert into `account_transactions` (`account_id`, `amount`, `balance`, `transactionable_id`, `transactionable_type`, `updated_at`, `created_at`) values (?, ?, ?, ?, ?, ?, ?) {"params":[1,1000,1000,1,"App\\Models\\Bonus","2020-07-08 00:29:43","2020-07-08 00:29:43"],"time":0.58} 
+[2020-07-08 00:29:43] production.DEBUG: select * from `users` where `id` = ? limit 1 {"params":[1],"time":1.95} 
+[2020-07-08 00:29:43] production.DEBUG: select count(*) as aggregate from `users` left join `accounts` on `accounts`.`user_id` = `users`.`id` left join `games` on `games`.`account_id` = `accounts`.`id` where `users`.`status` = ? and `games`.`status` = ? group by `users`.`id`, `name` {"params":[0,1],"time":0.65} 
+[2020-07-08 00:29:43] production.DEBUG: select * from `users` where `id` = ? limit 1 {"params":[1],"time":1.45} 
+[2020-07-08 00:29:43] production.DEBUG: select * from `users` where `id` = ? limit 1 {"params":[1],"time":1.28} 
+[2020-07-08 00:29:43] production.DEBUG: select * from `users` where `id` = ? limit 1 {"params":[1],"time":1.69} 
+[2020-07-08 00:29:43] production.DEBUG: select count(*) as aggregate from `users` left join `accounts` on `accounts`.`user_id` = `users`.`id` left join `games` on `games`.`account_id` = `accounts`.`id` where `users`.`status` = ? and `games`.`status` = ? group by `users`.`id`, `name` {"params":[0,1],"time":1.21} 
+[2020-07-08 00:29:45] production.DEBUG: select * from `users` where `id` = ? limit 1 {"params":[1],"time":1.59} 
+[2020-07-08 00:29:45] production.DEBUG: select * from `accounts` where `accounts`.`user_id` = ? and `accounts`.`user_id` is not null limit 1 {"params":[1],"time":0.79} 
+[2020-07-08 00:29:45] production.DEBUG: select * from `games` where (`gameable_type` = ? and `status` = ? and `account_id` = ?) order by `id` desc limit 1 {"params":["Packages\\GameSlots\\Models\\GameSlots",-1,1],"time":0.38} 
+[2020-07-08 00:29:45] production.DEBUG: insert into `game_slots` (`lines_bet`, `bet_amount`, `lines_win`, `scatters_count`, `free_games_count`, `reel_positions`, `updated_at`, `created_at`) values (?, ?, ?, ?, ?, ?, ?, ?) {"params":[0,0,0,0,0,"0,0,0,0,0","2020-07-08 00:29:45","2020-07-08 00:29:45"],"time":4.25} 
+[2020-07-08 00:29:45] production.DEBUG: insert into `games` (`account_id`, `bet`, `win`, `secret`, `server_seed`, `status`, `gameable_id`, `gameable_type`, `updated_at`, `created_at`) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) {"params":[1,0,0,"1,0,0,8,2","GeGq1yBLDompO81L",-1,1,"Packages\\GameSlots\\Models\\GameSlots","2020-07-08 00:29:45","2020-07-08 00:29:45"],"time":2.63} 
+[2020-07-08 00:29:45] production.DEBUG: select * from `game_free_slots` where `account_id` = ? and `quantity` > ? limit 1 {"params":[1,0],"time":0.51} 
+[2020-07-08 00:29:45] production.DEBUG: select * from `users` where `id` = ? limit 1 {"params":[1],"time":3.95} 
+[2020-07-08 00:29:45] production.DEBUG: select * from `users` where `id` = ? limit 1 {"params":[1],"time":1.58} 
+[2020-07-08 00:29:46] production.DEBUG: select * from `users` where `id` = ? limit 1 {"params":[1],"time":1.25} 
+[2020-07-08 00:29:46] production.DEBUG: select * from `accounts` where `accounts`.`user_id` = ? and `accounts`.`user_id` is not null limit 1 {"params":[1],"time":0.4} 
+[2020-07-08 00:29:46] production.DEBUG: select * from `games` where (`gameable_type` = ? and `status` = ? and `account_id` = ?) order by `id` desc limit 1 {"params":["Packages\\GameSlots\\Models\\GameSlots",-1,1],"time":1.39} 
+[2020-07-08 00:29:46] production.DEBUG: select * from `accounts` where `accounts`.`id` in (1) {"params":[],"time":0.55} 
+[2020-07-08 00:29:46] production.DEBUG: select * from `game_free_slots` where `account_id` = ? and `quantity` > ? limit 1 {"params":[1,0],"time":0.44} 
+[2020-07-08 01:06:56] production.DEBUG: select * from `users` where `id` = ? limit 1 {"params":[1],"time":1.99} 
+[2020-07-08 01:06:56] production.DEBUG: select * from `games` where `status` = ? order by `id` desc limit 5 {"params":[1],"time":0.78} 
+[2020-07-08 01:06:56] production.DEBUG: select * from `games` where `status` = ? order by `win` desc limit 1 {"params":[1],"time":1.49} 
+[2020-07-08 01:06:56] production.DEBUG: select * from `users` where `id` = ? limit 1 {"params":[1],"time":1.82} 
+[2020-07-08 01:06:56] production.DEBUG: select * from `users` where `id` = ? limit 1 {"params":[1],"time":1.57} 
+[2020-07-08 01:06:56] production.DEBUG: select * from `users` where `id` = ? limit 1 {"params":[1],"time":2.14} 
+[2020-07-08 01:06:56] production.DEBUG: select * from `games` where `status` = ? order by `id` desc limit 5 {"params":[1],"time":0.65} 
+[2020-07-08 01:06:56] production.DEBUG: select * from `games` where `status` = ? order by `win` desc limit 1 {"params":[1],"time":0.4} 
+[2020-07-08 01:07:09] production.DEBUG: select * from `users` where `id` = ? limit 1 {"params":[1],"time":2.42} 
+[2020-07-08 01:07:09] production.DEBUG: select * from `accounts` where `accounts`.`user_id` = ? and `accounts`.`user_id` is not null limit 1 {"params":[1],"time":0.82} 
+[2020-07-08 01:07:09] production.DEBUG: select * from `games` where (`gameable_type` = ? and `status` = ? and `account_id` = ?) order by `id` desc limit 1 {"params":["Packages\\GameSlots\\Models\\GameSlots",-1,1],"time":1.05} 
+[2020-07-08 01:07:09] production.DEBUG: select * from `accounts` where `accounts`.`id` in (1) {"params":[],"time":0.54} 
+[2020-07-08 01:07:09] production.DEBUG: select * from `game_free_slots` where `account_id` = ? and `quantity` > ? limit 1 {"params":[1,0],"time":0.54} 
+[2020-07-08 01:07:09] production.DEBUG: select * from `users` where `id` = ? limit 1 {"params":[1],"time":1.63} 
+[2020-07-08 01:07:09] production.DEBUG: select * from `users` where `id` = ? limit 1 {"params":[1],"time":1.61} 
+[2020-07-08 01:07:09] production.DEBUG: select * from `users` where `id` = ? limit 1 {"params":[1],"time":1.41} 
+[2020-07-08 01:07:09] production.DEBUG: select * from `accounts` where `accounts`.`user_id` = ? and `accounts`.`user_id` is not null limit 1 {"params":[1],"time":0.74} 
+[2020-07-08 01:07:09] production.DEBUG: select * from `games` where (`gameable_type` = ? and `status` = ? and `account_id` = ?) order by `id` desc limit 1 {"params":["Packages\\GameSlots\\Models\\GameSlots",-1,1],"time":0.94} 
+[2020-07-08 01:07:09] production.DEBUG: select * from `accounts` where `accounts`.`id` in (1) {"params":[],"time":0.77} 
+[2020-07-08 01:07:09] production.DEBUG: select * from `game_free_slots` where `account_id` = ? and `quantity` > ? limit 1 {"params":[1,0],"time":0.49} 
