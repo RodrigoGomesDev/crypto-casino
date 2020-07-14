@@ -41,4 +41,7 @@ Route::namespace('Api')->group(function() {
     
     //Rota de games por api
     Route::get('/games', 'GameController@index')->name('games-api');
+
+
+    Route::get('/leaderboard', 'LeaderboardController@index')->name('leaderboard-api');
 });
