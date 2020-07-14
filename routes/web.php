@@ -29,8 +29,6 @@ Route::prefix('login')
         Route::get('{provider}/callback', 'SocialLoginController@сallback');
     });
 
-// Pass certain config variables to the client side via variables.js
-// read more: https://medium.com/@serhii.matrunchyk/using-laravel-localization-with-javascript-and-vuejs-23064d0c210e
 Route::get('js/variables.js', function () {
     $response = Cache::rememberForever('variables.js', function () {
         $settings = [
@@ -54,8 +52,6 @@ Route::get('js/variables.js', function () {
     return $response;
 })->name('variables');
 
-// Pass translation strings to the client side via locale.js
-// read more: https://medium.com/@serhii.matrunchyk/using-laravel-localization-with-javascript-and-vuejs-23064d0c210e
 Route::get('js/locale.js', function () {
     $locale = app()->getLocale();
     $response = Cache::rememberForever('locale-' . $locale . '.js', function () use ($locale) {

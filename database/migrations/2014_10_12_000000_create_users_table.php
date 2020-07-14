@@ -18,8 +18,9 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name', 100)->unique();
             $table->string('email')->unique();
-            $table->string('role', 50);
-            $table->tinyInteger('status');
+            $table->string('role', 50)->default('USER');
+            $table->char('api_token', 60)->nullable();
+            $table->tinyInteger('status')->default(0);
             $table->string('password');
             $table->rememberToken();
             $table->ipAddress('last_login_from')->nullable();
@@ -39,6 +40,10 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('api_token');
+        });
+
         Schema::dropIfExists('users');
     }
 }
