@@ -11,7 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-//        $this->call(CurrencySeeder::class);
+    //    $this->call(CurrencySeeder::class);
+       $this->call(UserSeeder::class);
 
         // run extra packages seeders if there are any
         foreach (glob(base_path() . '/packages/**/database/seeds/*PackageSeeder.php') as $seederFile) {
